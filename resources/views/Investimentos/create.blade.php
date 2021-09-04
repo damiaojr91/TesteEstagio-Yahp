@@ -4,15 +4,17 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="col-md-6 p-lg-3 mx-auto my-5">
-            <h1 class="display-5 fw-normal">Editar Funcionário</h1>
-            <p class="lead fw-normal">Altere os dados para ajustar o cadastro do funcionário: </p>
+            <h1 class="display-5 fw-normal">Novo Funcionário</h1>
+            <p class="lead fw-normal">Preencha os dados abaixo para cadastrar um novo funcionário: </p>
         </div>
         <div class="product-device shadow-sm d-none d-md-block"></div>
         <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
     </div>
 
-    <form method="POST" action="{{route('updateFuncionario', $dados->id)}}">
+    <form method="POST" action="{{ route('storeFuncionario') }}">
+
         @csrf
+
         <div class="col-md-6 p-lg-3 mx-auto my-5 form-group row">
             <label for="colFormLabel" class="col-sm-2 col-form-label">Primeiro Nome: </label>
             <div class="col-sm-10">

@@ -29,6 +29,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Sobrenome</th>
                         <th scope="col">E-mail</th>
+                        <th> </th>
                     </tr>
                     </thead>
                    <tbody>
@@ -37,6 +38,18 @@
                                 <td>{{$funcionario['first_name']}}</td>
                                 <td>{{$funcionario['last_name']}}</td>
                                 <td>{{$funcionario['email']}}</td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="{{route('editFuncionario', $funcionario->id)}}" class="btn btn-info btn-sm" role="button">Editar</a>
+
+                                        <form method="POST" action={{route('deleteFuncionario', $funcionario['id'])}}>
+                                            @csrf
+                                            @method('DELETE') {{-- o HTML não suporta o método "DELETE", por isso é importante chamar o método "POST" e chamar logo em seguinda o método de deleção utilizando PHP--}}
+
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

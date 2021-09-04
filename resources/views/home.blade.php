@@ -14,8 +14,10 @@
             </div>
             <div class="offset-3 col-6 starter-template py-5 px-3">
                 <h3 class="text-center"> Lista de Funcionários </h3>
-                <div class="btn-group " role='group'>
+                <div class="d-flex btn-group " role='group'>
                     <a href="{{ route('indexFuncionarios') }}" class="btn btn-info">Funcionários</a>
+                    <a href="{{ route('indexInvestimentos') }}" class="btn btn-success">Investimentos</a>
+                    <a href="{{ route('indexInvestimentos') }}" class="btn btn-warning">Investimentos por funcionário</a>
                 </div>
             </div>
         </div>

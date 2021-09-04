@@ -22,8 +22,9 @@ Route::get('/', function() {return view('home');})->name('home');
 Route::get('/funcionarios', 'App\\Http\\Controllers\\FuncionariosController@index')->name('indexFuncionarios');
 Route::get('/funcionarios/criacao', 'App\\Http\\Controllers\\FuncionariosController@create')->name('createFuncionario');
 Route::post('/funcionarios/criacao', 'App\\Http\\Controllers\\FuncionariosController@store')->name('storeFuncionario');
-Route::put('/funcionarios/edicao/{id}', 'App\\Http\\Controllers\\FuncionariosController@edit')->name('editFuncionario');
-Route::post('/funcionarios/atualizacao/{id}', 'App\\Http\\Controllers\\FuncionariosController@update')->name('updateFuncionario');
-Route::delete('/funcionarios/delecao/{id}', 'App\\Http\\Controllers\\FuncionariosController@delete')->name('deleteFuncionario');
+Route::get('/funcionarios/visualizar/{id}', 'App\\Http\\Controllers\\FuncionariosController@show')->name('showFuncionario');
+Route::get('/funcionarios/edicao/{id}', 'App\\Http\\Controllers\\FuncionariosController@edit')->name('editFuncionario');
+Route::patch('/funcionarios/{id}', 'App\\Http\\Controllers\\FuncionariosController@update')->name('updateFuncionario');
+Route::delete('/funcionarios/delecao/{id}', 'App\\Http\\Controllers\\FuncionariosController@destroy')->name('deleteFuncionario');
 
 Route::get('/investimentos', 'App\\Http\\Controllers\\InvestimentosController@index')->name('indexInvestimentos');

@@ -47,7 +47,7 @@ class FuncionariosController extends Controller
         ]);
 
         $funcionarios = Funcionario::create($dados);
-
+        return redirect('/funcionarios');
     }
 
     public function show($id)
@@ -57,7 +57,13 @@ class FuncionariosController extends Controller
 
     public function edit($id)
     {
-        //
+        $dados = Funcionario::all();//->find($id);
+            //$request->only([
+            //'id','first_name','last_name','email',
+            // 'avatar'
+        //]);
+
+        return view('Funcionarios.edit', $dados);//->with('dados',$dados); //o que significa o Funcionario::make??
     }
 
     public function update(Request $request, $id)
@@ -65,8 +71,10 @@ class FuncionariosController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Funcionario::destroy($request->id);
+
+        return redirect('/funcionarios');
     }
 }

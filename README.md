@@ -2,6 +2,7 @@
 
 * * *
 ***Requisitos:***
+
 Composer
 Nginx
 PHP
@@ -76,6 +77,7 @@ return view (('nomeDa.view'), compact('nomedoarray'));
 **Dicas:**
 
 **Exibindo dados em campos editáveis:**
+
 Em casos onde é necessário puxar os dados de uma tabela para a view é necessário enviar os dados para a view através de uma controller no formato de um array.
 Exemplo:
 ~~~php
@@ -91,6 +93,7 @@ Já o "find" está buscando a variável/campo solicitado.
 
 
 **Botão de deletar na view**
+
 Além de criar uma controller com a função de deleção, dentro da view é importante colocar o botão dentro de um formulário e especificar o formulário como "POST", adicionar @csrf para adicionar a segurança e @method('DELETE') para "converter" o método Post em Delete utilizado o PHP. Exemplo:
 
 ~~~PHP
@@ -130,6 +133,7 @@ Além de criar uma controller com a função de deleção, dentro da view é imp
 
 
 **Tabelas de relacionamento**
+
 Quando trabalhamos com tabelas de relacionamento, precisamos criar uma Migration com o nome das duas tabelas (ex:"Nome1Nome2"), criamos também uma Model com o mesmo padrão de nome da tabela e dentro dessa Model, indicamos que essa tabela é uma Pivot Table, da seguinte maneira:
 
 ~~~php

@@ -3,82 +3,62 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Investimento;
 
 class InvestimentosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $investimentos = Investimento::all();
+        return view ('Investimentos.index')->with('investimentos',$investimentos);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+
+        return view('Investimentos.create');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+
+        $dados = $request->only([
+            'nome','tipo','valor_investimento',
+        ]);
+
+        $investimentos = Investimento::create($dados);
+        return redirect('/investimentos');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $investimento = Investimento::find($id);
+        return view('Investimentos.edit', compact('investimento'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $investimento = Investimento::find($id);
+
+        $investimento->update([
+            'nome'=>$request->nome,
+            'tipo'=>$request->tipo,
+            'valor_investimento'=>$request->valor_investimento,
+        ]);
+
+        return redirect('/investimentos');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($id) //poderia ser (Request $request)
     {
-        //
+        Investimento::destroy($id); //Investimento::destroy($request->id);
+
+        return redirect('/investimentos');
     }
 }

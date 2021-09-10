@@ -17,14 +17,21 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function() {return view('home');})->name('home');
+// Route::get('/', function() {return view('home');})->name('home');
+Route::get('/', 'App\\Http\\Controllers\\HomeController@index')->name('home');
 
 Route::get('/funcionarios', 'App\\Http\\Controllers\\FuncionariosController@index')->name('indexFuncionarios');
 Route::get('/funcionarios/criacao', 'App\\Http\\Controllers\\FuncionariosController@create')->name('createFuncionario');
 Route::post('/funcionarios/criacao', 'App\\Http\\Controllers\\FuncionariosController@store')->name('storeFuncionario');
-Route::get('/funcionarios/visualizar/{id}', 'App\\Http\\Controllers\\FuncionariosController@show')->name('showFuncionario');
-Route::get('/funcionarios/edicao/{id}', 'App\\Http\\Controllers\\FuncionariosController@edit')->name('editFuncionario');
+Route::get('/funcionarios/{id}/visualizar', 'App\\Http\\Controllers\\FuncionariosController@show')->name('showFuncionario');
+Route::get('/funcionarios/{id}/edicao', 'App\\Http\\Controllers\\FuncionariosController@edit')->name('editFuncionario');
 Route::patch('/funcionarios/{id}', 'App\\Http\\Controllers\\FuncionariosController@update')->name('updateFuncionario');
-Route::delete('/funcionarios/delecao/{id}', 'App\\Http\\Controllers\\FuncionariosController@destroy')->name('deleteFuncionario');
+Route::delete('/funcionarios/{id}/delecao/', 'App\\Http\\Controllers\\FuncionariosController@destroy')->name('deleteFuncionario');
 
 Route::get('/investimentos', 'App\\Http\\Controllers\\InvestimentosController@index')->name('indexInvestimentos');
+Route::get('/investimentos/criacao', 'App\\Http\\Controllers\\InvestimentosController@create')->name('createInvestimento');
+Route::post('/investimentos/criacao', 'App\\Http\\Controllers\\InvestimentosController@store')->name('storeInvestimento');
+Route::get('/investimentos/{id}/visualizar', 'App\\Http\\Controllers\\InvestimentosController@show')->name('showInvestimento');
+Route::get('/investimentos/{id}/edicao', 'App\\Http\\Controllers\\InvestimentosController@edit')->name('editInvestimento');
+Route::patch('/investimentos/{id}', 'App\\Http\\Controllers\\InvestimentosController@update')->name('updateInvestimento');
+Route::delete('/investimentos/{id}/delecao', 'App\\Http\\Controllers\\InvestimentosController@destroy')->name('deleteInvestimento');

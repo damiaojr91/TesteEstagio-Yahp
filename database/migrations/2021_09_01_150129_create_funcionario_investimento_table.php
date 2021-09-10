@@ -19,6 +19,7 @@ class CreateFuncionarioInvestimentoTable extends Migration
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');
             $table->unsignedBigInteger('investimento_id');
             $table->foreign('investimento_id')->references('id')->on('investimentos');
+            $table->float('valor',8,2);
             $table->timestamps();
         });
     }

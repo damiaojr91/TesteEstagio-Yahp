@@ -17,7 +17,6 @@ class CreateInvestimentosTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('tipo');
-            $table->float('valor_investimento', 8, 2);
             $table->timestamps();
         });
     }

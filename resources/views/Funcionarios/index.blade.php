@@ -29,7 +29,6 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Sobrenome</th>
                         <th scope="col">E-mail</th>
-                        <th> </th>
                     </tr>
                     </thead>
                    <tbody>

@@ -10,5 +10,9 @@ class Investimento extends Model
     use HasFactory;
 
     protected $table = "investimentos";
-    protected $fillable = ['nome', 'tipo', 'valor_investimento'];
+    protected $fillable = ['nome', 'tipo'];
+
+    public function funcionarios(){
+        return $this->belongsToMany(Funcionario::class)->using(FuncionarioInvestimento::class)->withPivot('valor'); //o atributo "withPivot" serve para referenciarmos atributos a mais que serão trabalhados na tabela
+    }
 }

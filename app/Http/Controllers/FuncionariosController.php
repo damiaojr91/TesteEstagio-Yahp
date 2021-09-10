@@ -57,23 +57,27 @@ class FuncionariosController extends Controller
 
     public function edit($id)
     {
-        $dados = Funcionario::all();//->find($id);
-            //$request->only([
-            //'id','first_name','last_name','email',
-            // 'avatar'
-        //]);
-
-        return view('Funcionarios.edit', $dados);//->with('dados',$dados); //o que significa o Funcionario::make??
+        $funcionario = Funcionario::find($id);
+        return view('Funcionarios.edit', compact('funcionario'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $funcionario = Funcionario::find($id);
+
+        $funcionario->update([
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'email'=>$request->email,
+            //'avatar'=>$request->avatar,
+        ]);
+
+        return redirect('/funcionarios');
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request) //poderia ser ($id)
     {
-        Funcionario::destroy($request->id);
+        Funcionario::destroy($request->id); //Funcionario::destroy($id)
 
         return redirect('/funcionarios');
     }

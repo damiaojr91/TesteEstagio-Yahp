@@ -16,7 +16,7 @@
             <div class="offset-3 col-6 starter-template py-5 px-3">
 
                 <div class="btn-group my-5" role='group'>
-                    <a href="{{ route('createFuncionario') }}" class="btn btn-success">Adicionar</a>
+                    <a href="{{ route('createInvestimento') }}" class="btn btn-success">Adicionar</a>
                 </div>
 
                 <div class="btn-group my-5" role='group'>
@@ -26,23 +26,23 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Sobrenome</th>
-                        <th scope="col">E-mail</th>
+                        <th scope="col">Investimento</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Valor</th>
                         <th> </th>
                     </tr>
                     </thead>
                    <tbody>
-                        @foreach ($funcionarios as $funcionario)
+                        @foreach ($investimentos as $investimento)
                             <tr>
-                                <td>{{$funcionario['first_name']}}</td>
-                                <td>{{$funcionario['last_name']}}</td>
-                                <td>{{$funcionario['email']}}</td>
+                                <td>{{$investimento['nome']}}</td>
+                                <td>{{$investimento['tipo']}}</td>
+                                <td>{{$investimento['valor_investimento']}}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{route('editFuncionario', $funcionario->id)}}" class="btn btn-info btn-sm" role="button">Editar</a>
+                                        <a href="{{route('editInvestimento', $investimento->id)}}" class="btn btn-info btn-sm" role="button">Editar</a>
 
-                                        <form method="POST" action={{route('deleteFuncionario', $funcionario['id'])}}>
+                                        <form method="POST" action={{route('deleteInvestimento', $investimento['id'])}}>
                                             @csrf
                                             @method('DELETE') {{-- o HTML não suporta o método "DELETE", por isso é importante chamar o método "POST" e chamar logo em seguinda o método de deleção utilizando PHP--}}
 

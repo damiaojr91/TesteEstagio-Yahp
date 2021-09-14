@@ -24,7 +24,7 @@ class InvestimentosController extends Controller
     {
 
         $dados = $request->only([
-            'nome','tipo','valor_investimento',
+            'nome','tipo',
         ]);
 
         $investimentos = Investimento::create($dados);
@@ -49,7 +49,6 @@ class InvestimentosController extends Controller
         $investimento->update([
             'nome'=>$request->nome,
             'tipo'=>$request->tipo,
-            'valor_investimento'=>$request->valor_investimento,
         ]);
 
         return redirect('/investimentos');

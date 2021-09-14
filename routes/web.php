@@ -35,3 +35,10 @@ Route::get('/investimentos/{id}/visualizar', 'App\\Http\\Controllers\\Investimen
 Route::get('/investimentos/{id}/edicao', 'App\\Http\\Controllers\\InvestimentosController@edit')->name('editInvestimento');
 Route::patch('/investimentos/{id}', 'App\\Http\\Controllers\\InvestimentosController@update')->name('updateInvestimento');
 Route::delete('/investimentos/{id}/delecao', 'App\\Http\\Controllers\\InvestimentosController@destroy')->name('deleteInvestimento');
+
+Route::get('/funcionarios/{id}/investimentos', 'App\\Http\\Controllers\\FuncionarioInvestimentosController@index')->name('indexFuncionarioInvestimentos');
+Route::get('/funcionarios/{id}/investimento/criar', 'App\\Http\\Controllers\\FuncionarioInvestimentosController@create')->name('createFuncionarioInvestimentos');
+Route::post('/funcionarios/{id}/investimento', 'App\\Http\\Controllers\\FuncionarioInvestimentosController@store')->name('storeFuncionarioInvestimentos');
+Route::get('/funcionarios/{id}/investimento/{investimento_id}/edicao', 'App\\Http\\Controllers\\FuncionarioInvestimentosController@edit')->name('editFuncionarioInvestimentos');
+Route::patch('/funcionarios/{id}/investimento/{investimento_id}/', 'App\\Http\\Controllers\\FuncionarioInvestimentosController@update')->name('updateFuncionarioInvestimentos');
+Route::delete('/funcionarios/{id}/investimento/{investimento_id}', 'App\\Http\\Controllers\\FuncionarioInvestimentosController@destroy')->name('deleteFuncionarioInvestimentos');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Investimento;
 use App\Models\Funcionario;
-use App\Models\Home;
+use App\Models\FuncionarioInvestimentos;
 
 class HomeController extends Controller
 {
@@ -13,8 +13,9 @@ class HomeController extends Controller
     {
         $funcionarios = Funcionario::all();
         $investimentos = Investimento::all();
+        $funcionarioInvestimentos = FuncionarioInvestimentos::all();
 
-        return view ('home',compact('funcionarios','investimentos'));
+        return view ('home',compact('funcionarios','investimentos', 'funcionarioInvestimentos'));
     }
 
     public function create()

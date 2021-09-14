@@ -25,11 +25,6 @@
                 <input type="text" class="form-control" id="colFormLabel" name="tipo" placeholder="Insira o tipo do investimento." value="{{$investimento->tipo}}">
             </div>
 
-            <label for="colFormLabel" class="col-sm-2 col-form-label">Valor: </label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="colFormLabel" name="valor_investimento" placeholder="Insira o valor do investimento." value="{{$investimento->valor_investimento}}">
-            </div>
-
             <div class="btn-group mx-auto my-5" role='group'>
                 <button type="submit" class="btn btn-success">Salvar</button>
                 <a href="{{ route('home') }}" class="btn btn-info btn" role="button">Voltar</a>

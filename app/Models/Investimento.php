@@ -13,6 +13,6 @@ class Investimento extends Model
     protected $fillable = ['nome', 'tipo'];
 
     public function funcionarios(){
-        return $this->belongsToMany(Funcionario::class)->using(FuncionarioInvestimento::class)->withPivot('valor'); //o atributo "withPivot" serve para referenciarmos atributos a mais que serão trabalhados na tabela
+        return $this->belongsToMany(Funcionario::class)->using(FuncionarioInvestimentos::class)->withPivot('valor'); //o atributo "withPivot" serve para referenciarmos atributos a mais que serão trabalhados na tabela
     }
 }

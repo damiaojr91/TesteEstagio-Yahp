@@ -36,20 +36,14 @@
                                     <td>{{$funcionario['first_name']}}</td>
                                     <td>{{$funcionario['last_name']}}</td>
                                     <td>{{$funcionario['email']}}</td>
-                                    <td>{{$funcionario['investimento']}}</td>
+                                    <td>
+                                    <div class="d-flex">
+                                        <a href="{{route('indexFuncionarioInvestimentos', $funcionario['id'])}}" class="btn btn-info btn-sm" role="button">Detalhes</a>
+                                    </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
-
-                        {{-- <tbody>
-                            <tr>
-                                <td>TESTE</td>
-                                <td>TESTE</td>
-                                <td>TESTE</td>
-                                <td>TESTE</td>
-                            </tr>
-                        </tbody> --}}
-
                     </table>
                 </div>
             </div>

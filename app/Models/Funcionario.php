@@ -13,6 +13,6 @@ class Funcionario extends Model
     protected $fillable = ['first_name', 'last_name', 'email'];
 
     public function investimentos(){
-        return $this->belongsToMany(Investimento::class)->using(FuncionarioInvestimentos::class)->withPivot('valor'); //o atributo "withPivot" serve para referenciarmos atributos a mais que serão trabalhados na tabela
+        return $this->belongsToMany(Investimento::class)->using(FuncionarioInvestimentos::class)->withPivot('valor')->withTimestamps(); //o atributo "withPivot" serve para referenciarmos atributos a mais que serão trabalhados na tabela
     }
 }

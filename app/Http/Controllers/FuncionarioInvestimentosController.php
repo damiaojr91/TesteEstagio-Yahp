@@ -43,32 +43,31 @@ class FuncionarioInvestimentosController extends Controller
         return redirect('/');
     }
 
-    public function edit($id, $investimento_id) //
+    public function edit(Request $request, $id, $investimento_id)
     {
-        $funcionario = Funcionario::findOrFail($id);
+        $funcionario = Funcionario::with('investimentos')->find($id);
         $investimento = $funcionario->investimentos()->where('investimento_id',$investimento_id)->first();
 
-        return view('FuncionarioInvestimentos.edit', compact('funcionario', 'investimento'));
+        return view('FuncionarioInvestimentos.edit', compact('funcionario','investimento'));
     }
 
     public function update(Request $request, $id, $investimento_id)
     {
-        // $investimento = Investimento::with('funcionarios')->find($id);
-        $funcionario = FuncionarioInvestimentos::findOrFail($id);
+        $funcionario = Funcionario::findOrFail($id); //Encontra o funcionario
+        $investimento = $funcionario->investimentos(); //Busca todos os investimentos do funcionario, não usa o first porque estamos trazendo uma model toda
 
-        $funcionario->update([
-            'funcionario_id'=>$request->funcionario_id,
-            'investimento_id'=>$request->investimento_id,
+        $investimento->updateExistingPivot($investimento_id, [ //em caso de atualizar tabelas pivot
             'valor'=>$request->valor,
         ]);
 
-        return redirect('/');
+        return redirect()->route('indexFuncionarioInvestimentos', $id);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id, $investimento_id)
     {
-        FuncionarioInvestimentos::destroy($id);
+        $funcionario = Funcionario::find($id);
+        $investimento = $funcionario->investimentos()->detach($investimento_id);
 
-        return redirect('/');
+        return redirect()->route('indexFuncionarioInvestimentos', $id);
     }
 }

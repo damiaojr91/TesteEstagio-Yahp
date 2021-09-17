@@ -23,6 +23,15 @@ class InvestimentosController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+            'nome' => 'required',
+            'tipo' => 'required',
+        ],
+        [
+            'nome.required' => 'O campo Nome precisa ser preenchido',
+            'tipo.required' => 'O campo Tipo precisa ser preenchido',
+        ]);
+
         $dados = $request->only([
             'nome','tipo',
         ]);
@@ -44,6 +53,15 @@ class InvestimentosController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nome' => 'required',
+            'tipo' => 'required',
+        ],
+        [
+            'nome.required' => 'O campo Nome precisa ser preenchido',
+            'tipo.required' => 'O campo Tipo precisa ser preenchido',
+        ]);
+
         $investimento = Investimento::find($id);
 
         $investimento->update([

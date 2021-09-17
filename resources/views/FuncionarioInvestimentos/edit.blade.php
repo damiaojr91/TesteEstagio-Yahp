@@ -35,6 +35,15 @@
                 <button type="submit" class="btn btn-success">Salvar</button>
                 <a href="{{ route('home') }}" class="btn btn-info btn" role="button">Voltar</a>
             </div>
+
+            @if($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <p>{{$error}}</p>
+                @endforeach
+            </ul>
+            @endif
+
         </div>
     </form>
 

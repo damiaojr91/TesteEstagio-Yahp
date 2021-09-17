@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\FuncionarioInvestimentos;
 use App\Models\Funcionario;
 use App\Models\Investimento;
 use Illuminate\Validation\Rule;
@@ -34,11 +33,13 @@ class FuncionarioInvestimentosController extends Controller
                     return $query->where('funcionario_id', $request->funcionario_id);
                 }),
             ],
+            'valor' => 'required',
+        ],
+        [
+            'valor.required' => 'O campo Valor não pode ser nulo!',
         ]);
 
         Funcionario::find($request->funcionario_id)->investimentos()->attach($request->investimento_id,['valor'=> $request->valor]);
-
-        // $funcionarioInvestimentos = FuncionarioInvestimentos::create($dados);
 
         return redirect('/');
     }
@@ -53,8 +54,16 @@ class FuncionarioInvestimentosController extends Controller
 
     public function update(Request $request, $id, $investimento_id)
     {
+
         $funcionario = Funcionario::findOrFail($id); //Encontra o funcionario
         $investimento = $funcionario->investimentos(); //Busca todos os investimentos do funcionario, não usa o first porque estamos trazendo uma model toda
+
+        $request->validate([
+            'valor' => 'required',
+        ],
+        [
+            'valor.required' => 'O campo Valor precisa ser preenchido',
+        ]);
 
         $investimento->updateExistingPivot($investimento_id, [ //em caso de atualizar tabelas pivot
             'valor'=>$request->valor,
@@ -63,7 +72,7 @@ class FuncionarioInvestimentosController extends Controller
         return redirect()->route('indexFuncionarioInvestimentos', $id);
     }
 
-    public function destroy(Request $request, $id, $investimento_id)
+    public function destroy($id, $investimento_id)
     {
         $funcionario = Funcionario::find($id);
         $investimento = $funcionario->investimentos()->detach($investimento_id);

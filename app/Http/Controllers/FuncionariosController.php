@@ -40,11 +40,28 @@ class FuncionariosController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            // 'avatar' => 'avatar',
+        ],
+        [
+            'first_name.required' => 'O campo Primeiro Nome precisa ser preenchido',
+            'last_name.required' => 'O campo Último Nome precisa ser preenchido',
+            'email.required' => 'O campo email precisa ser preenchido',
+            // 'avatar' => 'avatar',
+        ]);
 
         $dados = $request->only([
             'first_name','last_name','email',
             // 'avatar'
         ]);
+
+        // $dados = $request->only([
+        //     'first_name','last_name','email',
+        //     // 'avatar'
+        // ]);
 
         $funcionarios = Funcionario::create($dados);
         return redirect('/funcionarios');
@@ -64,6 +81,19 @@ class FuncionariosController extends Controller
     public function update(Request $request, $id)
     {
         $funcionario = Funcionario::find($id);
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            // 'avatar' => 'avatar',
+        ],
+        [
+            'first_name.required' => 'O campo Primeiro Nome precisa ser preenchido',
+            'last_name.required' => 'O campo Último Nome precisa ser preenchido',
+            'email.required' => 'O campo email precisa ser preenchido',
+            // 'avatar' => 'avatar',
+        ]);
 
         $funcionario->update([
             'first_name'=>$request->first_name,

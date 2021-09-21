@@ -64,7 +64,7 @@ class FuncionariosController extends Controller
         // ]);
 
         $funcionarios = Funcionario::create($dados);
-        return redirect('/funcionarios');
+        return redirect()->route('indexFuncionarios');
     }
 
     public function show($id)
@@ -102,13 +102,17 @@ class FuncionariosController extends Controller
             //'avatar'=>$request->avatar,
         ]);
 
-        return redirect('/funcionarios');
+        return redirect()->route('indexFuncionarios');
     }
 
-    public function destroy(Request $request) //poderia ser ($id)
+    public function destroy($id) //poderia ser ($id) ou (Request $request)
     {
-        Funcionario::destroy($request->id); //Funcionario::destroy($id)
+        // Funcionario::destroy($request->id); //Funcionario::destroy($id)
 
-        return redirect('/funcionarios');
+        $funcionario = Funcionario::find($id);
+        $funcionario->investimento()->sync([]); //A função sync está sendo utilizada para apagar do banco de dados qualquer ligação entre funcionario e investimento
+        $funcionario->delete();
+
+        return redirect()->route('indexFuncionarios');
     }
 }

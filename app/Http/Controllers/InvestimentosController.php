@@ -37,7 +37,7 @@ class InvestimentosController extends Controller
         ]);
 
         $investimentos = Investimento::create($dados);
-        return redirect('/investimentos');
+        return redirect()->route('indexInvestimentos');
     }
 
     public function show($id)
@@ -69,13 +69,16 @@ class InvestimentosController extends Controller
             'tipo'=>$request->tipo,
         ]);
 
-        return redirect('/investimentos');
+        return redirect()->route('indexInvestimentos');
     }
 
     public function destroy($id) //poderia ser (Request $request)
     {
-        Investimento::destroy($id); //Investimento::destroy($request->id);
+        // Investimento::destroy($id); //Investimento::destroy($request->id);
+        $investimento = Investimento::find($id);
+        $investimento->funcionarios()->sync([]); //A função sync está sendo utilizada para apagar do banco de dados qualquer ligação entre funcionario e investimento
+        $investimento->delete();
 
-        return redirect('/investimentos');
+        return redirect()->route('indexInvestimentos');
     }
 }

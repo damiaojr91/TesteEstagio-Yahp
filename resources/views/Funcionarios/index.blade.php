@@ -20,6 +20,10 @@
                 </div>
 
                 <div class="btn-group my-5" role='group'>
+                    <a href="{{route('importaFuncionarios')}}" class="btn btn-info btn-warning" role="button">Importar Funcionários</a>
+                    </div>
+
+                <div class="btn-group my-5" role='group'>
                     <a href="{{ route('home') }}" class="btn btn-info">Voltar</a>
                 </div>
 

@@ -23,7 +23,7 @@ class FuncionarioInvestimentosController extends Controller
         return view('FuncionarioInvestimentos.create', compact('funcionario','investimentos'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $request->validate([ //adicionando regras de validação para existir apenas um investimento_id por usuario LARAVEL VALIDATOR
             'investimento_id'=>[ //Cria regras para poder puxar o investimento_id
@@ -41,7 +41,7 @@ class FuncionarioInvestimentosController extends Controller
 
         Funcionario::find($request->funcionario_id)->investimentos()->attach($request->investimento_id,['valor'=> $request->valor]);
 
-        return redirect('/');
+        return redirect()->route('indexFuncionarioInvestimentos', $id);
     }
 
     public function edit(Request $request, $id, $investimento_id)

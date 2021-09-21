@@ -1,177 +1,65 @@
-## **Criando um projeto em laravel**
+**Introdução**
+****
+Xastree Financial Services é um sistema que tem como objetivo apoiar seus colaboradores no gerenciamento de investimentos financeiros.
 
-* * *
-***Requisitos:***
+<br>
 
-Composer
-Nginx
-PHP
-MySQL
-Redis
-* * *
+**Homepage**
+****
+<img src="/TesteEstagio-Yahp/imagens_md/homepage.png" alt="Homepage"/>
 
-**1.** Execute os comandos iniciais para gerar o projeto:
-~~~php
-composer create-project laravel/laravel NomeDoProjeto
-composer install
-composer update
-~~~
+<br>
+<br>
 
-**2.** Instale bootstrap: https://getbootstrap.com/
+Ao acessarmos a página inicial nos deparamos com os itens principais de atuação no sistema:
+1. É possível visualizarmos a lista completa de colaboradores cadastrados.
+1.1. É possível também acessarmos a visualização de tipos de investimentos disponíveis para aquele funcionário, assim como a possibilidade de visualizar os investimentos que já estão vinculados ao colaborador.
+2. Podemos acessar a tela de cadastro de funcionários.
+3. Podemos acessar a tela de cadastro de investimentos.
 
-**3.** Configure arquivo **.env** com os dados de acesso ao Banco de Dados: 
+<br>
 
-~~~php
-DB_CONNECTION=mysql
-DB_HOST=172.17.0.1
-DB_PORT=3306
-DB_DATABASE=testeestagio
-DB_USERNAME=root
-DB_PASSWORD=root-docker-databases
-~~~
+**Funcionários**
+****
+<img src="/TesteEstagio-Yahp/imagens_md/funcionarios.png" alt="funcionarios"/>
 
-**4.** Crie **Routes** para a execução das funções do sistema INDEX, CREATE, STORE, EDIT, UPDATE e DESTROY. Exemplo:
+<br>
+<br>
 
-~~~php
-Route::get('/funcionarios', 'App\\Http\\Controllers\\FuncionariosController@index')->name('indexFuncionarios');
-Route::get('/funcionarios/criacao', 'App\\Http\\Controllers\\FuncionariosController@create')->name('createFuncionario');
-Route::post('/funcionarios/criacao', 'App\\Http\\Controllers\\FuncionariosController@store')->name('storeFuncionario');
-Route::put('/funcionarios/edicao/{id}', 'App\\Http\\Controllers\\FuncionariosController@edit')->name('editFuncionario');
-Route::post('/funcionarios/atualizacao/{id}', 'App\\Http\\Controllers\\FuncionariosController@update')->name('updateFuncionario');
-Route::delete('/funcionarios/delecao/{id}', 'App\\Http\\Controllers\\FuncionariosController@delete')->name('deleteFuncionario');
-~~~
+Dentro da tela de funcionários somos apresentados às opções:
+1. Lista de funcionários já cadastrados, contendo nome, sobrenome e email. Além das opções de Editar e Deletar o funcionário.
+2. Botões de manipulação. É possível criar um novo funcionário manualmente ou importar uma lista de funcionários já existentes em uma api.
+3. Opções de cabeçalho com botões para navegação rápida entre as páginas Homepage, Funcionários e Investimentos.
 
-**5.** Criar Views para exibição das telas.
+<br>
 
-**6.** Comando para criar migrations:
-~~~php
-php artisan make:migration create_table_nome
-~~~
+**Investimentos**
+****
+<img src="/TesteEstagio-Yahp/imagens_md/investimentos.png" alt="investimentos"/>
 
-**7.** Comando para criar models:
-~~~php
-php artisan make:model NomeModel
-~~~
+<br>
+<br>
 
-**8.** Criar Controllers com as Functions de execução
-**8.1.** Comando para criar uma controller:
-~~~php
-php artisan make:controller NomeDaController --resource
-~~~
+A tela de investimentos, assim como a de funcionários, possui uma interface simples e direta. Nela temos as seguintes opções:
+1. Lista de investimentos cadastrados, assim como suas opções de edição e deleção.
+2. Botões de manipulação, com a possibilidade de inserção manual de investimentos.
+3. Opções de cabeçalho com botões para navegação rápida entre as páginas Homepage, Funcionários e Investimentos.
 
-**8.2.** Ao final da function, caso o resultado seja retornado a uma View, adicionar no fim do código a linha
+<br>
 
-~~~php
-return view ('nomeDa.view')->with('apelidoParaAVariavel',$variavel);
-~~~
+**Atribuindo valores ao investimento**
+****
+<img src="/TesteEstagio-Yahp/imagens_md/funcionarioinvestimento.png" alt="funcionarioinvestimento"/>
 
-ou
+<br>
+<br>
 
-~~~php
-return view (('nomeDa.view'), compact('nomedoarray'));
-~~~
+A atribuição de valores e vínculos entre funcionário e investimentos acontece dentro da tela de detalhes de cada funcionário. Para acessá-la utilizamos o botão "Detalhes" existente dentro da homepage.
 
+Nessa tela podemos realizar as seguintes opções:
+1. Visualização da lista de investimentos cadastrados para o funcionário, assim como suas opções de edição e deleção.
+2. Botões de manipulação. Aqui podemos vincular um investimento ao funcionário e também adicionar o valor investido pelo colaborador.
+3. Para facilitar a utilização do sistema e sabermos qual funcionário estamos editando, o nome do colaborador é exibido logo acima de sua lista de investimentos.
+4. Opções de cabeçalho com botões para navegação rápida entre as páginas Homepage, Funcionários e Investimentos.
 
-***
-***
-**Dicas:**
-
-**Exibindo dados em campos editáveis:**
-
-Em casos onde é necessário puxar os dados de uma tabela para a view é necessário enviar os dados para a view através de uma controller no formato de um array.
-Exemplo:
-~~~php
-    public function edit($id)
-    {
-        $funcionario = Funcionario::find($id);
-        return view('Funcionarios.edit', compact('funcionario'));
-    }
-~~~
-
-No exemplo exibido a function "compact" está automaticamente convertendo os dados contidos na classe Funcionário para o formato de array.
-Já o "find" está buscando a variável/campo solicitado.
-
-
-**Botão de deletar na view**
-
-Além de criar uma controller com a função de deleção, dentro da view é importante colocar o botão dentro de um formulário e especificar o formulário como "POST", adicionar @csrf para adicionar a segurança e @method('DELETE') para "converter" o método Post em Delete utilizado o PHP. Exemplo:
-
-~~~PHP
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Sobrenome</th>
-                        <th scope="col">E-mail</th>
-                        <th> </th>
-                    </tr>
-                    </thead>
-                   <tbody>
-                        @foreach ($funcionarios as $funcionario)
-                            <tr>
-                                <td>{{$funcionario['first_name']}}</td>
-                                <td>{{$funcionario['last_name']}}</td>
-                                <td>{{$funcionario['email']}}</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="{{route('editFuncionario', $funcionario->id)}}" class="btn btn-info btn-sm" role="button">Editar</a>
-
-                                        <form method="POST" action={{route('deleteFuncionario', $funcionario['id'])}}>
-                                            @csrf
-                                            @method('DELETE') {{-- o HTML não suporta o método "DELETE", por isso é importante chamar o método "POST" e chamar logo em seguinda o método de deleção utilizando PHP--}}
-
-                                            <button type="submit" class="btn btn-danger">Deletar</button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-
-                </table>
-~~~
-
-
-**Tabelas de relacionamento**
-
-Quando trabalhamos com tabelas de relacionamento, precisamos criar uma Migration com o nome das duas tabelas (ex:"Nome1Nome2"), criamos também uma Model com o mesmo padrão de nome da tabela e dentro dessa Model, indicamos que essa tabela é uma Pivot Table, da seguinte maneira:
-
-~~~php
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Relations\Pivot;
-
-class FuncionarioInvestimento extends Pivot
-{
-    protected $fillable=['funcionario_id','investimento_id','valor'];
-}
-~~~
-
-Seguindo  exemplo, essa Model FuncionarioInvestimento servirá como um "meio campo" na comunicação entre a tabela Funcionário e a tabela Investimentos.
-
-Para que haja o relacionamento é necessário indicar isso nas respectivas Models de cada tabela envolvida no processo (menos a pivot). Por exemplo, na model Funcionarios fica assim:
-
-~~~php
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Investimento extends Model
-{
-    use HasFactory;
-
-    protected $table = "investimentos";
-    protected $fillable = ['nome', 'tipo'];
-
-    public function funcionarios(){
-        return $this->belongsToMany(Funcionario::class)->using(FuncionarioInvestimento::class)->withPivot('valor'); //o atributo "withPivot" serve para referenciarmos atributos a mais que serão trabalhados na tabela
-    }
-}
-~~~
-
-Para entender melhor como as relações funcionam podemos "destrinchar" a function "funcionarios" do exemplo apresentado:
-
-1. Para a relação temos que dizer qual o "grau" da relação (hasOne, belongsToOne, hasMany, belongsToMany, etc...).
-2. Em seguida indicamos qual model irá conter as informações de intermédio da relação, no caso do exemplo seria a model FuncionarioInvestimento 
-3. Por último, caso a tabela pivot possua mais algum campo que deverá acompanhar a relação indicamos usando o atributo withPivot('colunaemquestao').
+<br>

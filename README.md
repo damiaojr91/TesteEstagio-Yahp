@@ -6,7 +6,7 @@ Xastree Financial Services é um sistema que tem como objetivo apoiar seus colab
 
 **Homepage**
 ****
-<img src="/TesteEstagio-Yahp/imagens_md/homepage.png" alt="Homepage"/>
+[Imgur](https://i.imgur.com/WZAgWMx.png)
 
 <br>
 <br>
@@ -21,7 +21,7 @@ Ao acessarmos a página inicial nos deparamos com os itens principais de atuaç�
 
 **Funcionários**
 ****
-<img src="/TesteEstagio-Yahp/imagens_md/funcionarios.png" alt="funcionarios"/>
+[Imgur](https://i.imgur.com/I1ktMWW.png)
 
 <br>
 <br>
@@ -35,7 +35,7 @@ Dentro da tela de funcionários somos apresentados às opções:
 
 **Investimentos**
 ****
-<img src="/TesteEstagio-Yahp/imagens_md/investimentos.png" alt="investimentos"/>
+[Imgur](https://i.imgur.com/OGHbHap.png)
 
 <br>
 <br>
@@ -47,9 +47,9 @@ A tela de investimentos, assim como a de funcionários, possui uma interface sim
 
 <br>
 
-**Atribuindo valores ao investimento**
+**Atribuindo investimentos ao funcionario**
 ****
-<img src="/TesteEstagio-Yahp/imagens_md/funcionarioinvestimento.png" alt="funcionarioinvestimento"/>
+[Imgur](https://i.imgur.com/ezre3F0.png)
 
 <br>
 <br>
@@ -60,6 +60,6 @@ Nessa tela podemos realizar as seguintes opções:
 1. Visualização da lista de investimentos cadastrados para o funcionário, assim como suas opções de edição e deleção.
 2. Botões de manipulação. Aqui podemos vincular um investimento ao funcionário e também adicionar o valor investido pelo colaborador.
 3. Para facilitar a utilização do sistema e sabermos qual funcionário estamos editando, o nome do colaborador é exibido logo acima de sua lista de investimentos.
-4. Opções de cabeçalho com botões para navegação rápida entre as páginas Homepage, Funcionários e Investimentos.
+4. Opções de cabeçalho com botões para ndavegação rápida entre as páginas Homepage, Funcionários e Investimentos.
 
 <br>

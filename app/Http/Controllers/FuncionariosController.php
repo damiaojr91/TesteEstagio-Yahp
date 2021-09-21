@@ -110,7 +110,7 @@ class FuncionariosController extends Controller
         // Funcionario::destroy($request->id); //Funcionario::destroy($id)
 
         $funcionario = Funcionario::find($id);
-        $funcionario->investimento()->sync([]); //A função sync está sendo utilizada para apagar do banco de dados qualquer ligação entre funcionario e investimento
+        $funcionario->investimentos()->sync([]); //A função sync está sendo utilizada para apagar do banco de dados qualquer ligação entre funcionario e investimento
         $funcionario->delete();
 
         return redirect()->route('indexFuncionarios');

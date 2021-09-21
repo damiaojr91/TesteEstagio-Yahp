@@ -1,8 +1,22 @@
+
 **Introdução**
 ****
 Xastree Financial Services é um sistema que tem como objetivo apoiar seus colaboradores no gerenciamento de investimentos financeiros.
 
+***Requisitos:***
+Este projeto foi desenvolvido em Laravel e para tal é necessária a utilização de:
+
+- Composer
+- PHP
+- MySQL
+
+Também é necessário alguns ajustes no arquivo .env do projeto pois é onde é efetivamente feita a conexão com o banco de dados.
+
+No projeto também foi utilizado o bootstrap em uma blade de layout onde esta replica o design para as outras blades através da chamada de sua função.
+
 <br>
+
+****
 
 **Homepage**
 ****

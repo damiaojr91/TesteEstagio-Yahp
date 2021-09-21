@@ -6,7 +6,7 @@ Xastree Financial Services é um sistema que tem como objetivo apoiar seus colab
 
 **Homepage**
 ****
-[Imgur](https://i.imgur.com/WZAgWMx.png)
+![img](https://i.imgur.com/WZAgWMx.png)
 
 <br>
 <br>
@@ -21,7 +21,7 @@ Ao acessarmos a página inicial nos deparamos com os itens principais de atuaç�
 
 **Funcionários**
 ****
-[Imgur](https://i.imgur.com/I1ktMWW.png)
+![img](https://i.imgur.com/I1ktMWW.png)
 
 <br>
 <br>
@@ -35,7 +35,7 @@ Dentro da tela de funcionários somos apresentados às opções:
 
 **Investimentos**
 ****
-[Imgur](https://i.imgur.com/OGHbHap.png)
+![img](https://i.imgur.com/OGHbHap.png)
 
 <br>
 <br>
@@ -49,7 +49,7 @@ A tela de investimentos, assim como a de funcionários, possui uma interface sim
 
 **Atribuindo investimentos ao funcionario**
 ****
-[Imgur](https://i.imgur.com/ezre3F0.png)
+![img](https://i.imgur.com/ezre3F0.png)
 
 <br>
 <br>
